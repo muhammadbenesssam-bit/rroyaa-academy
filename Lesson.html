@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">قائمة الدروس</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'raaya-green': '#10b981', 
+                        'raaya-sky': '#0ea5e9', 
+                        'raaya-babyblue': '#38bdf8', 
+                        'raaya-beige': '#f5f5dc',
+                        'raaya-dark': '#1e293b', 
+                        'raaya-light': '#ffffff',
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body class="bg-raaya-beige text-gray-800 transition-colors duration-300 dark:bg-raaya-dark dark:text-raaya-light">
+
+    <header class="bg-raaya-light dark:bg-gray-900 shadow-md transition-colors duration-300">
+        <div class="container mx-auto p-4 flex justify-between items-center max-w-7xl">
+            <a href="index.html" class="text-2xl font-bold text-raaya-dark dark:text-raaya-light">أكاديمية رؤية</a>
+            <div id="dark-mode-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 cursor-pointer">
+                <span id="sun-icon" class="text-yellow-500 text-xl">☀️</span>
+                <span id="moon-icon" class="text-indigo-400 text-xl hidden">🌙</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8 max-w-4xl mt-10">
+        
+        <a href="level1.html" class="inline-flex items-center text-raaya-sky hover:text-raaya-dark mb-6 transition duration-300">
+            <svg class="w-5 h-5 ml-2 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            العودة إلى مواد المستوى الأول
+        </a>
+
+        <h1 class="text-4xl font-extrabold text-raaya-dark dark:text-raaya-light mb-8" id="subject-title">دروس المادة</h1>
+        
+        <div id="lessons-list" class="space-y-4">
+            </div>
+
+    </main>
+    
+    <script type="module">
+        // يتم استخدام type="module" لاستيراد الدوال من progress_logic.js
+        import { SUBJECT_DATA, isLessonCompleted, isLessonOpen } from './js/progress_logic.js'; 
+        import './js/main.js'; // استدعاء المنطق العام
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subjectKey = urlParams.get('subject');
+
+            if (!subjectKey || !SUBJECT_DATA[subjectKey]) {
+                document.getElementById('subject-title').textContent = 'خطأ في المادة';
+                return;
+            }
+            
+            const subjectData = SUBJECT_DATA[subjectKey];
+            document.getElementById('subject-title').textContent = `مادة: ${subjectData.title}`;
+            
+            const lessonsList = document.getElementById('lessons-list');
+
+            subjectData.lessons.forEach((lessonId, index) => {
+                const lessonNumber = index + 1;
+                const lessonTitle = `${lessonNumber}. درس الفيديو رقم ${lessonNumber}`; // عنوان افتراضي للدرس
+                const isCompleted = isLessonCompleted(subjectKey, lessonId);
+                const isOpen = isLessonOpen(subjectKey, index); // index هو رقم الدرس -1
+
+                const completionIcon = isCompleted ? '✅' : (isOpen ? '▶️' : '🔒');
+                const completionStatus = isCompleted ? 'مكتمل' : (isOpen ? 'متاح' : 'مغلق');
+                
+                let linkHref = isOpen ? `lesson_viewer.html?subject=${subjectKey}&lesson=${lessonId}` : '#';
+                let cardClass = isOpen ? 
+                    'cursor-pointer hover:shadow-xl border-raaya-sky' : 
+                    'opacity-60 cursor-not-allowed border-gray-400';
+                
+                if (isCompleted) {
+                    cardClass += ' bg-raaya-green/20';
+                }
+
+                const lessonCard = document.createElement('a');
+                lessonCard.href = linkHref;
+                lessonCard.className = `block bg-raaya-light dark:bg-gray-800 p-5 rounded-xl shadow-lg transition duration-300 flex justify-between items-center border-r-4 ${cardClass}`;
+                
+                if (!isOpen) {
+                    lessonCard.onclick = (e) => {
+                        e.preventDefault();
+                        alert('🔒 هذا الدرس مغلق حتى تكمل الدرس السابق.');
+                    };
+                }
+
+                lessonCard.innerHTML = `
+                    <div>
+                        <h2 class="text-xl font-bold text-raaya-dark dark:text-raaya-light">${lessonTitle}</h2>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">${completionStatus}</p>
+                    </div>
+                    <div class="status-indicator font-bold text-3xl">
+                        ${completionIcon}
+                    </div>
+                `;
+                lessonsList.appendChild(lessonCard);
+            });
+        });
+    </script>
+</body>
+</html>

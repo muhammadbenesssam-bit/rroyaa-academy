@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كتب المستوى الأول | أكاديمية رؤية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        
+        :root {
+            --primary-bg: #f4f6f9; 
+            --header-color: #ff8c00; /* لون الكتب */
+            --card-bg: #ffffff;
+            --text-color: #343a40;
+            --shadow-subtle: 0 6px 20px rgba(0, 0, 0, 0.08); 
+            --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.15); 
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, var(--header-color) 0%, #cc5500 100%);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            font-weight: 900;
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .book-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow-subtle);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .book-cover {
+            width: 90px;
+            height: 120px;
+            background-color: #ddd;
+            border-radius: 8px;
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--header-color);
+            flex-shrink: 0;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-info {
+            flex-grow: 1;
+        }
+
+        .book-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .book-author {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: var(--header-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .download-button:hover {
+            background-color: #cc5500;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 40px;
+            text-align: center;
+            text-decoration: none;
+            color: #6c757d;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 كتب المستوى الأول والمراجع</h1>
+            <p class="subtitle">مصادر موثوقة ومختارة بعناية لتعميق فهمك للمواد الأساسية.</p>
+        </div>
+
+        <div class="books-grid">
+            
+            <div class="book-card">
+                <div class="book-cover"><i class="fas fa-cube"></i></div>
+                <div class="book-info">
+                    <div class="book-title"> كتب المستوي الاول </div>
+                    <div class="book-author">   الكتب المقرر قرائتها في المستوي الاول </div>
+                       <a href="done/المختصر في التفسير.pdf" target="_blank" class="download-button"></a>
+                          <a href="done/رياض الصالحين.pdf" target="_blank" class="download-button"></a>
+                            <a href="done/البحر الرائق.pdf" target="_blank" class="download-button"></a>
+                        <i class="fas fa-download"></i> تحميل PDF
+                    </a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover"><i class="fas fa-mosque"></i></div>
+                <div class="book-info">
+                    <div class="book-title"> الفقة</div>
+                    <div class="book-author"> كتاب الفقة الميسّر</div>
+                    <a href="done/الفقه الميسر.pdf" target="_blank" class="download-button">
+                        <i class="fas fa-book-open"></i> تحميل pdf
+                    </a>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <div class="book-cover"><i class="fas fa-feather-alt"></i></div>
+                <div class="book-info">
+                    <div class="book-title">العقيدة </div>
+                    <div class="book-author"> متن الاصول الثلاثة</div>
+                    <a href="done/ثلاثة الأصول وأدلتها.pdf" target="_blank" class="download-button">
+                        <i class="fas fa-download"></i> تحميل PDF
+                    </a>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <div class="book-cover"><i class="fas fa-globe-asia"></i></div>
+                <div class="book-info">
+                    <div class="book-title"> السيرة </div>
+                    <div class="book-author">كتاب هذا الحبيب محمد يا محب</div>
+                    <a href="done/هذا الحبيب محمد رسول الله صلى الله عليه وسلم يا محب.pdf" target="_blank" class="download-button">
+                        <i class="fas fa-download"></i> تحميل PDF
+                    </a>
+                </div>
+            </div>
+
+        </div>
+          </div>
+            
+            <div class="book-card">
+                <div class="book-cover"><i class="fas fa-globe-asia"></i></div>
+                <div class="book-info">
+                    <div class="book-title"> جدول المستوي الاول  </div>
+                    <div class="book-author">   جدول المستوي الاول  </div>
+                    <a href="done/جدول المستوي الاول.pdf" target="_blank" class="download-button">
+                        <i class="fas fa-download"></i> تحميل PDF
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        
+
+        <a href="level1.html" class="back-link"><i class="fas fa-chevron-right"></i> العودة لقائمة مواد المستوى الأول</a>
+    </div>
+</body>
+</html>

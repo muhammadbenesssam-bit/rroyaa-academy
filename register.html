@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية رؤية - تسجيل جديد</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        roya: { green: '#A2E1A7', sky: '#87CEEB', baby: '#ADD8E6', beige: '#F5F5DC' }
+                    },
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-roya-beige text-gray-800 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="w-full max-w-xl p-8 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] bg-white dark:bg-gray-800 transition duration-300 border-t-8 border-roya-green/70">
+        
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold mb-2 text-roya-green">ابدأ رحلتك العلمية</h2>
+            <p class="text-gray-500 dark:text-gray-400">سجل بياناتك للوصول إلى كافة المستويات والدروس</p>
+        </div>
+
+        <form id="registration-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="col-span-full">
+                <label for="name" class="block text-sm font-medium mb-1">الاسم رباعي (باللغة العربية)</label>
+                <input type="text" id="name" name="name" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:ring-roya-green focus:border-roya-green transition"
+                       placeholder="مثال: محمد عصام عوض   ">
+            </div>
+
+            <div class="col-span-full md:col-span-1">
+                <label for="contact" class="block text-sm font-medium mb-1">رقم الهاتف أو البريد الإلكتروني</label>
+                <input type="text" id="contact" name="contact" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:ring-roya-green focus:border-roya-green transition"
+                       placeholder="لإشعارات التقدم">
+            </div>
+
+            <div class="col-span-full md:col-span-1">
+                <label for="password" class="block text-sm font-medium mb-1">كلمة المرور</label>
+                <input type="password" id="password" name="password" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:ring-roya-green focus:border-roya-green transition">
+            </div>
+
+            <div class="col-span-full md:col-span-1">
+                <span class="block text-sm font-medium mb-2">تحديد الجنس</span>
+                <div class="flex gap-6">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="gender" value="ذكر" required class="form-radio text-roya-green focus:ring-roya-green w-4 h-4">
+                        <span class="mr-2">ذكر</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="gender" value="أنثى" required class="form-radio text-roya-green focus:ring-roya-green w-4 h-4">
+                        <span class="mr-2">أنثى</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-span-full md:col-span-1">
+                <label for="governorate" class="block text-sm font-medium mb-1">المحافظة</label>
+                <select id="governorate" name="governorate" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:ring-roya-green focus:border-roya-green transition">
+                    <option value="" disabled selected>اختر محافظتك</option>
+                    <option value="القاهرة">القاهرة</option>
+                    <option value="الجيزة">الجيزة</option>
+                    <option value="الإسكندرية">الإسكندرية</option>
+                    <option value="القليوبية">القليوبية</option>
+                    <option value="البحيرة">البحيرة</option>
+                    <option value="المنوفية">المنوفية</option>
+                    <option value="الغربية">الغربية</option>
+                    <option value="كفر الشيخ">كفر الشيخ</option>
+                    <option value="الدقهلية">الدقهلية</option>
+                    <option value="دمياط">دمياط</option>
+                    <option value="الشرقية">الشرقية</option>
+                    <option value="بورسعيد">بورسعيد</option>
+                    <option value="الإسماعيلية">الإسماعيلية</option>
+                    <option value="السويس">السويس</option>
+                    <option value="الفيوم">الفيوم</option>
+                    <option value="بني سويف">بني سويف</option>
+                    <option value="المنيا">المنيا</option>
+                    <option value="أسيوط">أسيوط</option>
+                    <option value="سوهاج">سوهاج</option>
+                    <option value="قنا">قنا</option>
+                    <option value="الأقصر">الأقصر</option>
+                    <option value="أسوان">أسوان</option>
+                    <option value="الوادي الجديد">الوادي الجديد</option>
+                    <option value="مطروح">مطروح</option>
+                    <option value="البحر الأحمر">البحر الأحمر</option>
+                    <option value="شمال سيناء">شمال سيناء</option>
+                    <option value="جنوب سيناء">جنوب سيناء</option>
+                    <option value="الإسكندرية">الإسكندرية</option>
+                </select>
+            </div>
+
+            <div class="col-span-full mt-6">
+                 <button type="submit" 
+                        class="w-full bg-roya-green hover:bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition duration-300 text-lg">
+                    <i class="fas fa-check-circle ml-2"></i> الانتهاء والبدء بالدراسة
+                </button>
+            </div>
+            
+            <div class="col-span-full mt-4 pt-4 border-t text-center text-sm dark:border-gray-700">
+                <span>لديك حساب بالفعل؟ </span>
+                <a href="login.html" class="text-roya-sky font-bold hover:underline">
+                    تسجيل الدخول من هنا
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        // دالة لحفظ المستخدم في قاعدة بيانات وهمية (usersDB) وضبطه كـ currentUser
+        function saveAndLoginUser(userData) {
+            // حفظ كالمستخدم الحالي (مهم لتتبع التقدم)
+            localStorage.setItem('currentUser', JSON.stringify(userData)); 
+
+            // حفظ في قاعدة بيانات المستخدمين
+            let users = JSON.parse(localStorage.getItem('usersDB')) || [];
+            users.push(userData);
+            localStorage.setItem('usersDB', JSON.stringify(users));
+        }
+
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const contact = document.getElementById('contact').value.trim();
+            const password = document.getElementById('password').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const governorate = document.getElementById('governorate').value;
+
+            // التحقق من أن الاتصال غير مستخدم مسبقاً
+            const users = JSON.parse(localStorage.getItem('usersDB')) || [];
+            const isContactTaken = users.some(u => u.email === contact || u.phone === contact);
+
+            if (isContactTaken) {
+                alert('هذا الرقم/البريد مستخدم بالفعل. الرجاء تسجيل الدخول أو استخدام بيانات أخرى.');
+                return;
+            }
+
+            const newUser = {
+                name: name,
+                email: contact.includes('@') ? contact : null,
+                phone: !contact.includes('@') ? contact : null,
+                password: password, 
+                gender: gender,
+                governorate: governorate, // حفظ المحافظة
+                level: 1, // يبدأ الطالب دائماً بالمستوى الأول
+                // تهيئة بنية حفظ التقدم (مهمة لخطواتنا القادمة)
+                progress: { 
+                    'fikh': { watched: 0, videoTime: 0, lastLesson: 1, completedLessons: [] },
+                    'seerah': { watched: 0, videoTime: 0, lastLesson: 1, completedLessons: [] },
+                    'aqidah': { watched: 0, videoTime: 0, lastLesson: 1, completedLessons: [] },
+                },
+                exam_passed: false 
+            };
+
+            saveAndLoginUser(newUser); 
+            
+            alert('أهلاً بك يا ' + name.split(' ')[0] + '، تم تسجيل حسابك بنجاح.');
+            window.location.href = 'index.html'; // الانتقال للواجهة الرئيسية
+        });
+    </script>
+</body>
+</html>

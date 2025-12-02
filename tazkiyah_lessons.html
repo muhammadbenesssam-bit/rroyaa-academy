@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دروس مادة التزكية | موقع احترافي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        
+        :root {
+            --primary-color: #28a745; /* لون التزكية (أخضر) */
+            --primary-gradient: linear-gradient(135deg, #28a745 0%, #1e7e34 100%); /* تدرج اللون الأساسي */
+            --background-color: #f4f6f9; /* خلفية ناعمة */
+            --card-background: #ffffff;
+            --text-color: #343a40;
+            --lesson-border: #e9ecef;
+            --shadow-subtle: 0 5px 15px rgba(0, 0, 0, 0.08); /* ظل ناعم للبطاقات */
+            --shadow-deep: 0 10px 25px rgba(0, 0, 0, 0.15); /* ظل للمشغل والقائمة */
+            --selected-bg: #e6ffec; /* خلفية خفيفة للدرس المختار */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            /* استخدام التدرج الجديد */
+            background: var(--primary-gradient); 
+            color: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            font-weight: 900;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* تحسين مظهر مشغل الفيديو */
+        .video-player-container {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-deep); /* ظل عميق لمشغل الفيديو */
+            background-color: #000;
+        }
+
+        .video-player-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* تحسين مظهر قائمة الدروس */
+        .lessons-list {
+            background-color: var(--card-background);
+            border-radius: 15px;
+            box-shadow: var(--shadow-deep); /* ظل عميق لقائمة الدروس */
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--lesson-border);
+            text-decoration: none;
+            color: var(--text-color);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lesson-item:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-item:hover {
+            background-color: #f1fff4; /* لون فاتح ناعم عند التمرير */
+            transform: translateY(-2px); /* تأثير رفع بسيط */
+            box-shadow: 0 2px 10px rgba(40, 167, 69, 0.1); /* ظل خفيف عند التمرير */
+        }
+
+        /* حالة الدرس النشط - تصميم أكثر تميزاً */
+        .lesson-item.active {
+            background-color: var(--selected-bg);
+            border-right: 6px solid var(--primary-color); /* شريط جانبي أعرض */
+            transform: translateY(0);
+            font-weight: 700;
+            box-shadow: inset 0 0 10px rgba(40, 167, 69, 0.1); /* ظل داخلي خفيف */
+        }
+
+        .lesson-info {
+            display: flex;
+            align-items: center;
+            text-align: right;
+        }
+
+        .lesson-number {
+            font-size: 1.3rem; /* تكبير الرقم قليلاً */
+            font-weight: 900;
+            color: var(--primary-color);
+            min-width: 45px;
+            text-align: center;
+            margin-left: 15px;
+        }
+
+        .lesson-title-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            padding: 7px 14px; /* زيادة حجم الوسم */
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .status-open {
+            background-color: rgba(40, 167, 69, 0.15); 
+            color: #1e7e34; 
+        }
+        
+        /* حالة مشغل الآن - زر مميز */
+        .status-playing {
+            background: var(--primary-gradient); /* استخدام التدرج اللوني للزر */
+            color: white;
+            box-shadow: 0 3px 8px rgba(40, 167, 69, 0.4);
+        }
+
+        .status-playing i {
+            margin-left: 5px;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+            text-decoration: none;
+            color: #6c757d;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>دروس مادة التزكية</h1>
+            <p class="subtitle">جميع الدروس مفتوحة ومتاحة للجميع. اختر درساً للبدء.</p>
+        </div>
+
+        <div class="video-player-container">
+            <iframe id="youtubePlayer" 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/w_-1UDLHB64" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+        
+        <h2>قائمة الدروس:</h2>
+        
+        <div class="lessons-list" id="lessonsList">
+            
+            <div data-video-id="w_-1UDLHB64" class="lesson-item active">
+                <div class="lesson-info">
+                    <span class="lesson-number">01</span>
+                    <span class="lesson-title-text"> شرح حديث (إنما الأعمال بالنيات) | الشيخ محمد حسن عبد الغفار</span>
+                </div>
+                <div class="status-badge status-playing">
+                    <i class="fas fa-eye"></i> مشغل الآن
+                </div>
+            </div>
+
+            <div data-video-id="46lvczwUwHs" class="lesson-item">
+                <div class="lesson-info">
+                    <span class="lesson-number">02</span>
+                    <span class="lesson-title-text">شرح حديث: ما نهيتكم عنه فاجتنبوه و ما أمرتكم به فأتوا منه ما استطعتم</span>
+                </div>
+                <div class="status-badge status-open">
+                    <i class="fas fa-play-circle"></i> مشاهدة
+                </div>
+            </div>
+            
+            <div data-video-id="BF2aIUq6xE0" class="lesson-item">
+                <div class="lesson-info">
+                    <span class="lesson-number">03</span>
+                    <span class="lesson-title-text">فضائل الذكر العظيمة | الشيخ محمد حسن عبد الغفار</span>
+                </div>
+                <div class="status-badge status-open">
+                    <i class="fas fa-play-circle"></i> مشاهدة
+                </div>
+            </div>
+
+            <div data-video-id="XSPn8FnUhrg" class="lesson-item">
+                <div class="lesson-info">
+                    <span class="lesson-number">04</span>
+                    <span class="lesson-title-text">شرح حديث: لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه</span>
+                </div>
+                <div class="status-badge status-open">
+                    <i class="fas fa-play-circle"></i> مشاهدة
+                </div>
+            </div>
+
+            <div data-video-id="CqYYfqYFkEo" class="lesson-item">
+                <div class="lesson-info">
+                    <span class="lesson-number">05</span>
+                    <span class="lesson-title-text">الدرس الخامس: فضل تزكية النفس والقلب</span>
+                </div>
+                <div class="status-badge status-open">
+                    <i class="fas fa-play-circle"></i> مشاهدة
+                </div>
+            </div>
+            
+            <div data-video-id="UA3dppclKlk" class="lesson-item">
+                <div class="lesson-info">
+                    <span class="lesson-number">06</span>
+                    <span class="lesson-title-text">الدرس السادس: آفات اللسان وكيفية علاجها</span>
+                </div>
+                <div class="status-badge status-open">
+                    <i class="fas fa-play-circle"></i> مشاهدة
+                </div>
+            </div>
+            
+            <div data-video-id="ugk55tlDWLI" class="lesson-item">
+                <div class="lesson-info">
+                    <span class="lesson-number">07</span>
+                    <span class="lesson-title-text">الدرس السابع: حسن الظن بالله وبالناس</span>
+                </div>
+                <div class="status-badge status-open">
+                    <i class="fas fa-play-circle"></i> مشاهدة
+                </div>
+            </div>
+
+            <div data-video-id="PGznwsf-G6o" class="lesson-item">
+                <div class="lesson-info">
+                    <span class="lesson-number">08</span>
+                    <span class="lesson-title-text">الدرس الثامن: الإخلاص والنية الصادقة</span>
+                </div>
+                <div class="status-badge status-open">
+                    <i class="fas fa-play-circle"></i> مشاهدة
+                </div>
+            </div>
+
+        </div>
+
+        <a href="level1.html" class="back-link"><i class="fas fa-chevron-right"></i> العودة لقائمة المواد</a>
+    </div>
+
+    <script>
+        const lessons = document.querySelectorAll('.lesson-item');
+        const player = document.getElementById('youtubePlayer');
+
+        lessons.forEach(lesson => {
+            lesson.addEventListener('click', function() {
+                const videoId = this.getAttribute('data-video-id');
+                const newSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                player.src = newSrc;
+                
+                lessons.forEach(l => {
+                    l.classList.remove('active');
+                    const badge = l.querySelector('.status-badge');
+                    badge.classList.remove('status-playing');
+                    badge.classList.add('status-open');
+                    badge.innerHTML = '<i class="fas fa-play-circle"></i> مشاهدة';
+                });
+
+                this.classList.add('active');
+                const activeBadge = this.querySelector('.status-badge');
+                activeBadge.classList.remove('status-open');
+                activeBadge.classList.add('status-playing');
+                activeBadge.innerHTML = '<i class="fas fa-eye"></i> مشغل الآن';
+            });
+        });
+    </script>
+</body>
+</html>

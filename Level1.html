@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المستوى الأول - اختيار المادة | موقع احترافي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        
+        :root {
+            --primary-bg: #f4f6f9; /* خلفية الموقع فاتحة وناعمة */
+            --header-color: #007bff; /* أزرق أساسي لعنوان المستوى */
+            --card-bg: #ffffff;
+            --text-color: #343a40;
+            --shadow-subtle: 0 6px 20px rgba(0, 0, 0, 0.08); /* ظل ناعم */
+            --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.15); /* ظل عند التمرير */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* 1. تصميم العنوان الاحترافي */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 20px 30px;
+            /* استخدام تدرج لوني احترافي */
+            background: linear-gradient(135deg, var(--header-color) 0%, #0056b3 100%);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            font-weight: 900;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* 2. تصميم شبكة البطاقات */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .material-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-color);
+            /* تطبيق الظل الناعم */
+            box-shadow: var(--shadow-subtle);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 3. تأثير التفاعل (Hover Effect) */
+        .material-card:hover {
+            transform: translateY(-8px); /* رفع البطاقة قليلاً */
+            box-shadow: var(--shadow-hover); /* زيادة حدة الظل */
+        }
+        
+        .material-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            /* شريط علوي بلون المادة عند التمرير */
+            background-color: currentColor; 
+            transition: width 0.3s ease;
+        }
+        .material-card:hover:before {
+            width: 100%;
+        }
+
+
+        /* أنماط أيقونات المواد المتخصصة */
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ألوان التدرج لكل مادة */
+        .tazkiyah .icon-wrapper {
+            background: linear-gradient(45deg, #28a745, #1e7e34); /* أخضر التزكية */
+        }
+        .aqidah .icon-wrapper {
+            background: linear-gradient(45deg, #ffc107, #d89e00); /* ذهبي العقيدة */
+        }
+        .fiqh .icon-wrapper {
+            background: linear-gradient(45deg, #17a2b8, #0f6674); /* فيروزي الفقه */
+        }
+        .seerah .icon-wrapper {
+            background: linear-gradient(45deg, #dc3545, #a71d2a); /* عنابي السيرة */
+        }
+
+        .material-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .lesson-count {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            display: block;
+        }
+        
+        /* رابط العودة للأعلى */
+        .back-to-home {
+            display: block;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #6c757d;
+            transition: color 0.3s;
+        }
+        
+        .back-to-home:hover {
+            color: var(--header-color);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>المستوى الأول</h1>
+            <p class="subtitle">اختر المادة التي ترغب في دراستها من القائمة أدناه.</p>
+        </div>
+
+        <div class="materials-grid">
+            
+            <a href="tazkiyah_lessons.html" class="material-card tazkiyah" style="border-color: #28a745;">
+                <div class="icon-wrapper">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <div class="material-title">تزكية</div>
+                <span class="lesson-count">8 دروس متاحة</span>
+            </a>
+
+            <a href="aqidah_lessons.html" class="material-card aqidah" style="border-color: #ffc107;">
+                <div class="icon-wrapper">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="material-title">عقيدة</div>
+                <span class="lesson-count">6 دروس متاحة</span>
+            </a>
+            
+            <a href="fiqh_lessons.html" class="material-card fiqh" style="border-color: #17a2b8;">
+                <div class="icon-wrapper">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="material-title">فقه</div>
+                <span class="lesson-count">20 دروس متاحة</span>
+            </a>
+            
+            <a href="seerah_lessons.html" class="material-card seerah" style="border-color: #dc3545;">
+                <div class="icon-wrapper">
+                    <i class="fas fa-mosque"></i>
+                </div>
+                <div class="material-title">سيرة نبوية</div>
+                <span class="lesson-count">20 دروس متاحة</span>
+            </a>
+<a href="level1_books.html" class="material-card books" style="border-color: #ff8c00;">
+                <div class="icon-wrapper">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="material-title">الكتب والمراجع</div>
+                <span class="lesson-count">4 كتب أساسية متاحة</span>
+            </a>
+        </div>
+        
+        <a href="main_levels.html" class="back-to-home">
+            <i class="fas fa-arrow-right"></i> العودة لصفحة المستويات
+        </a>
+    </div>
+</body>
+</html>
